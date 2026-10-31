@@ -1,0 +1,20 @@
+ktor:
+  deployment:
+    port: 8080
+  application:
+    modules:
+      - com.example.com.ApplicationKt.module
+
+postgres:
+  url: "r2dbc:postgresql://localhost:5432/pizzadb"
+  user: "pizza"
+  password: "pizza"
+
+redis:
+  url: "redis://localhost:6379"
+
+jwt:
+  secret: "change-me-in-production"
+  issuer: "pizza-orders-demo"
+  audience: "pizza-orders-demo-clients"
+  realm: "Pizza Orders API"
