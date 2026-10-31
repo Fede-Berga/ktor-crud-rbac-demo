@@ -132,7 +132,7 @@ CI runs `./gradlew build` on JDK 21 against Postgres and Redis service container
 - **Revocable JWTs.** The blacklist makes logout immediate at the cost of one Redis `GET` per authenticated request. There are no refresh tokens.
 - **Simple rate limiter.** A fixed window keyed by the connection's remote host. Forwarded headers are not read, so behind a reverse proxy all clients would share one counter.
 
-This is not production software. The schema comes from `SchemaUtils.create`, with no migrations. Database credentials, the Redis URL and a placeholder JWT secret are hard-coded in [application.yaml](src/main/resources/application.yaml) with no environment overrides. Request bodies are not validated beyond their JSON types, orders stay `PENDING` because no endpoint changes their status, and Prometheus and Grafana run unpinned `latest` images.
+This is not production software. The schema comes from `SchemaUtils.create`, with no migrations. Database credentials, the Redis URL and a placeholder JWT secret are hard-coded in [application.yaml](src/main/resources/application.yaml) with no environment overrides. Request bodies are not validated beyond their JSON types, and a malformed body falls through to the catch-all handler as a 500 rather than a 400, as does deleting a pizza that still has orders (the foreign key has no `ON DELETE` rule). Orders stay `PENDING` because no endpoint changes their status, and Prometheus and Grafana run unpinned `latest` images.
 
 ## License
 
