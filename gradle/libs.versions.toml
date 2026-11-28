@@ -1,12 +1,12 @@
 [versions]
 bcrypt = "0.10.2"
 coroutines-reactive = "1.11.0"
-exposed = "1.6.0"
+exposed = "1.6.1"
 koin = "4.2.2"
 kotlin = "2.4.21"
 lettuce = "6.7.1.RELEASE"
-logback = "1.6.5"
-prometheus = "1.17.2"
+logback = "1.6.8"
+prometheus = "1.18.0"
 r2dbc-postgresql = "1.1.3.RELEASE"
 
 [libraries]
